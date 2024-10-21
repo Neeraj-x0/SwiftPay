@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { CameraView, Camera } from 'expo-camera';
 import { useNavigation } from '@react-navigation/native';
-import { Camera } from 'expo-camera';
 
 export default function QRCodeScannerScreen() {
   const [hasPermission, setHasPermission] = useState<boolean | null>(null);
@@ -10,24 +9,24 @@ export default function QRCodeScannerScreen() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    (async () => {
+    const getCameraPermissions = async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === 'granted');
-    })();
+    };
+    getCameraPermissions();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }: { type: string; data: string }) => {
+  const handleBarcodeScanned = ({ data }: { data: string }) => {
     setScanned(true);
     try {
       const parsedData = JSON.parse(data);
       // Navigate to Pay screen with the scanned data
+      setScanned(false);
       navigation.navigate({name: 'PaymentScreen', params: { contact: parsedData.contact }} as never);
     } catch (error) {
       console.error('Invalid QR code data:', error);
-      // Optionally, you can show an alert or toast message here
-      // Alert.alert('Error', 'Invalid QR code');
-      // Reset scanned state to allow another scan attempt
-      setScanned(false);
+      // You can show an alert or toast message here
+      alert(`Invalid QR code: ${data}`);
     }
   };
 
@@ -40,15 +39,17 @@ export default function QRCodeScannerScreen() {
 
   return (
     <View style={styles.container}>
-      <BarCodeScanner
+      <CameraView
         style={StyleSheet.absoluteFillObject}
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
+        onBarcodeScanned={scanned ? undefined : handleBarcodeScanned}
+        barcodeScannerSettings={{
+          barcodeTypes: ['qr'],
+        }}
       >
         <View style={styles.overlay}>
           <Text style={styles.overlayText}>Scan a QR Code</Text>
         </View>
-      </BarCodeScanner>
+      </CameraView>
     </View>
   );
 }
