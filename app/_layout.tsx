@@ -45,6 +45,8 @@ export default function RootLayout() {
         <Stack.Screen name="PayResult" options={{ headerShown: false }} />
         <Stack.Screen name="PaymentScreen" options={{ headerShown: false }} />
         <Stack.Screen name="VoiceComponent" options={{ headerShown: false }} />
+        <Stack.Screen name="Receive" options={{ headerShown: false }} />
+        <Stack.Screen name="Scanner" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
     </ThemeProvider>
