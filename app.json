@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.neerajx0.SwiftPay"
     },
     "web": {
       "bundler": "metro",
@@ -29,8 +30,19 @@
     "plugins": [
       "expo-router"
     ],
+    "assets": [
+      "./assets/fonts/ProductSans-Medium.ttf"
+    ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6a256557-a17f-464c-9ebe-81839f550727"
+      }
     }
   }
 }
