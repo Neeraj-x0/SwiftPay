@@ -1,50 +1,111 @@
-# Welcome to your Expo app 👋
+# SwiftPay
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+SwiftPay is a mobile application designed to facilitate secure and fast transactions, allowing users to send and receive payments, view transaction histories, check balances, and more. It is built using **React Native** for the frontend and **Spring Boot** for the backend.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Send and Receive Payments**: Easily transfer money between accounts.
+- **View Transactions**: Track your payment history in a user-friendly format.
+- **Check Balance**: Instantly check the balance of your account.
+- **Self Transfer**: Transfer money between your own accounts.
+- **Voice Assistant**: Control the app using voice commands.
+- **QR Code Support**: Receive payments via QR codes.
 
+## Screens
+
+1. **Home Screen**
+   - Displays user options like Pay, Receive, Check Balance, and Self Transfer.
+   - Shows recent transactions.
+   
+2. **Pay Screen**
+   - Allows users to make payments.
+
+3. **Receive Screen**
+   - Displays a QR code for others to scan and make payments.
+
+4. **Balance Screen**
+   - Shows the current balance of the user’s account.
+
+## Technology Stack
+
+### Frontend
+
+- **React Native**: Cross-platform mobile development.
+- **Expo**: Used for simplifying the development process.
+- **TypeScript**: Type safety and better development experience.
+- **React Navigation**: For handling navigation between screens.
+- **Expo Speech & Audio**: For enabling voice input and output.
+- **QRCode Support**: `react-native-qrcode-svg` for generating QR codes.
+
+### Backend
+
+- **Spring Boot**: Backend for managing and processing transactions (not covered in this README).
+
+## Installation and Setup
+
+### Prerequisites
+
+- **Node.js** (>= 12.x)
+- **npm** or **yarn**
+- **Expo CLI** installed globally.
+  
+  ```bash
+  npm install -g expo-cli
+  ```
+
+### Steps
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/SwiftPay.git
+   cd SwiftPay
+   ```
+
+2. Install the dependencies:
+
+   Using npm:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+   Or using yarn:
    ```bash
-    npx expo start
+   yarn install
    ```
 
-In the output, you'll find options to open the app in a
+3. Install any additional packages like `react-native-qrcode-svg`:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   Using npm:
+   ```bash
+   npm install react-native-qrcode-svg
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+   Or using yarn:
+   ```bash
+   yarn add react-native-qrcode-svg
+   ```
 
-## Get a fresh project
+4. Start the development server:
 
-When you're ready, run:
+   ```bash
+   expo start
+   ```
 
-```bash
-npm run reset-project
-```
+5. Run the app on a device or emulator:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+   - For iOS:
+     ```bash
+     npm run ios
+     ```
+   - For Android:
+     ```bash
+     npm run android
+     ```
 
-## Learn more
+## Usage
 
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Pay**: Navigate to the "Pay" screen and input the required details to send money.
+- **Receive**: Go to the "Receive" screen to view your QR code, which others can scan to pay you.
+- **Voice Assistant**: Use the built-in voice assistant to control actions like checking balance, sending payments, etc.
+- **Transactions**: View past transactions directly on the home screen.
